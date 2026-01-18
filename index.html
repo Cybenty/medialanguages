@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Media Literacy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            display: flex;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            flex-direction: column;
+            background-image: url(catphoto.jpg);
+            background-color: #ffffff;
+        }
+
+        footer {
+            background-color: #1e1e52;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row-reverse;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            bottom: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .topnav {
+            position: fixed;
+            top: 0;
+            overflow: hidden;
+            background-color: #1e1e52cd;
+            width: 100%;
+            align-items: center;
+            color: rgb(255, 255, 255);
+            font-family: "Poppins", sans-serif;
+            z-index: 1000;
+        }
+
+        .topnav h1 {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .topnav a {
+            float: right;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .welcome {
+            
+            color: white;
+            font-family: "Roboto", sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome span {
+            background-color: #283c80cc;
+            border-radius: 10px;
+            padding: 50px;
+            text-align: center;
+        }
+        .welcome h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .welcome p {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        .welcome a {
+            background-color: #ffffff;
+            color: #283c80;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        #textInformation,
+        #MediaCodes,
+        #MediaConventions,
+        #MediaProducersStakeholdersAndAudience {
+            padding: 20px;
+            margin-top: 45px;
+            max-width: 800px;
+            font-family: "Poppins", sans-serif;
+            border: solid 2px #283c80;
+            border-radius: 5px;
+            opacity: 0;
+            transform: translateY(50px); 
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            background-color: #ffffff; 
+        }
+        #textInformation.in-view,
+        #MediaCodes.in-view,
+        #MediaConventions.in-view,
+        #MediaProducersStakeholdersAndAudience.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #textInformation {
+            margin-top: 80px;
+            text-align: justify;
+
+        }
+
+        .rows {
+            display: flex;
+            flex-direction: row;
+            border: solid 1px #000000;
+            box-shadow: 2px 2px 5px #888888;
+            padding: 10px;
+        }
+
+        .rows span {
+            flex: 1;
+            margin-right: 20px;
+            size: fit-content;
+        }
+
+        li {
+            text-align: left;
+        }
+
+        table, th, td {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: solid 1px #000000;
+            table-layout: fixed;
+            text-align: center;
+        }
+        th{
+            background-color: #283c80;
+            color: white;
+            padding: 10px;
+        }
+        .headers {
+            text-align: center;
+            background: #283c80;
+            color: white;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("#textInformation, #MediaCodes, #MediaConventions, #MediaProducersStakeholdersAndAudience");
+
+            function checkInView() {
+                const windowHeight = window.innerHeight;
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < windowHeight && rect.bottom > 0) {
+                        section.classList.add("in-view");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", checkInView);
+            checkInView(); 
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="topnav">
+        <h1>Media Literacy</h1>
+        <a href="#MediaProducersStakeholdersAndAudience">Media Producers, Stakeholders and Audience</a>
+        <a href="#MediaConventions">Media Conventions</a>
+        <a href="#MediaCodes">Media Codes</a>
+        <a href="#textInformation">Text Information</a>
+    </nav>
+    <div class="welcome">
+        <span>
+        <h2> Welcome!</h2>
+        <p>Come and learn all about Media Languages!</p>
+        <a href="#textInformation">Start Exploring</a>
+        </span>
+    </div>
+
+    <div id="textInformation">
+        <!-- Content for Text Information goes here -->
+        <div class="headers">
+        <br> 
+        <br>
+        <h1>Text Information</h1>
+        </div> 
+        <p>Text information in media refers to the written content that conveys messages, ideas, and narratives to
+            the
+            audience. This can include headlines, captions, articles, scripts, and any other form of written
+            communication used in various media formats such as newspapers, websites, television, and social media.
+            Understanding text information is crucial for analyzing how media shapes public perception and
+            influences
+            societal norms.</p>
+        <br>
+        <div class="rows">
+            <span>
+                <h3>Denotation</h3>
+                <p>Denotation refers to the literal, explicit meaning of a word or text.</p>
+            </span>
+            <span>
+                <h3>Connotation</h3>
+                <p>Connotation refers to subjective interpretation of text based on context and emotion.</p>
+            </span>
+        </div>
+        <h3>Classifications</h3>
+        <div class="rows">
+            <span>
+                <h3>Non-Fiction</h3>
+                <p>Based on facts, reality, and verifiable information.</p>
+            </span>
+            <span>
+                <h3>Fiction</h3>
+                <p>Writers' imagination and creative storytelling.</p>
+            </span>
+        </div>
+
+
+        <h3> Production Process</h3>
+        <ol>
+            <li>Writer selects a topic or an issue worth writing about.</li>
+            <li>Writer does a thorough gathering of information about the topic.</li>
+            <li>Writer constructs an outline of the topic and composes the draft.</li>
+            <li>Writer goes back to the draft and develops it into a full text.</li>
+            <li>The writer turns in the article to the editor or publisher.</li>
+        </ol>
+        <h3>Assessing and evaluating text information</h3>
+        <ol>
+            <li>Accuracy and factuality - Text should be precise and must be based on facts.</li>
+            <li>Objectivity - Text information should not contain any biases, prejudice, or discrimination.</li>
+            <li>Language appropriateness - The level and kind of languages should be appropriate for the target. </li>
+
+            <li>Curriculum alignment - The textbook material should be consistent with the curriculum and
+                international standards.</li>
+            <li>Style and format- Most books are based on the Chicago manual of style when it comes to all editorial
+                concerns like capitalization, punctuation, and citation on the other hand, academic papers follow the
+                American psychological association style, newspaper follow a particular house style. </li>
+        </ol>
+        <h3>Creators of text information</h3>
+        <table>
+            <tr>
+                <th >Creator</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td> Author</td>
+                <td>Published</td>
+            </tr>
+            <tr>
+                <td>Writer</td>
+                <td>Not published</td>
+            </tr>
+            <tr>
+                <td>Contributor</td>
+                <td>Shared authorship, multiple authors </td>
+            </tr>
+            <tr>
+                <td>Columnist</td>
+                <td>Opinionated writer in newspaper</td>
+            </tr>
+            <tr>
+                <td>Blogger</td>
+                <td>Writes about personal experience</td>
+            </tr>
+            <tr>
+                <td>Editor</td>
+                <td>Edits works</td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td>Oversees production and distribution</td>
+            </tr>
+        </table>
+        <br>
+        <div class="rows">
+            <span>
+                <h3>Advantages</h3>
+                <ol>
+                    <li>Covers wide variety of topics</li>
+                    <li>One can access text information easily</li>
+                    <li>It is well-researched and comprehensively discussed</li>
+                </ol>
+            </span><span>
+                <h3>Limitation</h3>
+                <ol>
+                    <li>The book should be updated regularly to ensure accuracy and timeliness</li>
+                    <li>Text information can be lengthy making it difficult or tiresome to read</li>
+                </ol>
+            </span>
+        </div>
+
+    </div>
+
+    <div id="MediaCodes">
+        <div class="headers">
+        <br>
+        <br>
+        <!-- Content for Media Codes goes here -->
+        <h1>Media Codes</h1>
+        </div>
+        <p>Commonly have an established meaning, denotation or connotation to the target audience</p>
+        <br>
+        <h2>Types of media codes</h2>
+        <ol>
+            <li>
+                <h3>Symbolic codes</h3>
+            </li>
+            <ol type="a">
+                <li> Audiences based</li>
+                <li> The meaning of the product is not based on the product itself but on the interpretation of the
+                    audience</li>
+                <li> The symbolic codes in media include setting, mise en scene, acting and color</li>
+                <ol type="i">
+                    <li> <b>Setting</b>- time and place</li>
+                    <li> <b>Mise en scene</b> - french term everything within the frame</li>
+                    <li> <b>Acting</b> - portrayal of the actors</li>
+                    <li> <b>Colors</b>- considerations are highly connotative when it comes to interpretations it is
+                        also
+                        usually associated with cultural aspects</li>
+                </ol>
+            </ol>
+            <li>
+                <h3>Technical codes</h3>
+            </li>
+            <ol type="a">
+                <li>Refers to codes specific to a media form alone</li>
+                <li>Camera work operation positioning and movement for desired specific effects
+                    editing the process of selecting operating and ordering images and sound audio expression</li>
+            </ol>
+            <li>
+                <h3>Written codes</h3>
+            </li>
+            <ol type="a">
+                <li> Are the formal written language used in creating a media product</li>
+                <li> Includes the printed language the text visible with the media frame which is the text you can see.
+                </li>
+            </ol>
+        </ol>
+        <br>
+
+
+    </div>
+    <br>
+    <div id="MediaConventions">
+        <div class="headers">
+        <br>
+        <br>
+        <h1>Media Conventions</h1>
+        </div>
+        <p>Conventions refer to the possible methods in which codes are organized in a product.</p><br>
+
+        <h2>Types of conventions</h2>
+        <dl>
+            <dt>
+                <h3>Form convention</h3>
+            </dt>
+            <dd>
+                <p>Are ways in which the types of media codes are expected to be arrange. For instance, the title and
+                    main
+                    casts are expected to appear at the beginning of a movie while the credits are expected to appear at
+                    the
+                    end</p>
+            </dd>
+            <dt>
+                <h3>Story conventions</h3>
+            </dt>
+            <dd>
+                <p>Refer to the basic structures of narratives. Examples of story conventions narrative structures,
+                    character
+                    constructions, and point of view</p><br>
+            </dd>
+            <dt>
+                <h3>Genre conventions</h3>
+            </dt>
+            <dd>
+                <p>Refer to the common use of the elements of narratives such as the characters, setting s or themes in
+                    a
+                    certain type of media
+                    Genre conventions can be formal or thematic and are usually linked to the expectations of the
+                    audience
+                </p>
+            </dd>
+        </dl>
+    </div>
+    <br>
+    <div id="MediaProducersStakeholdersAndAudience">
+        <div class="headers">
+        <br>
+        <br>
+        <!-- Content for Media Producers, Stakeholders and Audience goes here -->
+        <h1>Media producers stakeholders and audience</h1>
+        </div>
+        <p>Aside from media language, media practitioners also look into other elements such as the producers, the
+            stakeholders, and the audience </p>
+        <dl>
+            <dt>
+                <h3>Media Producers</h3>
+            </dt>
+            <dd>refers to the people who initiate, plan , and produce media</dd>
+            <dd>They need to have the skill in assessing the media texts and a thorough understanding of the target
+                product; and the processes that go into creating the products
+            <dt>
+                <h3>Stakeholders</h3>
+            </dt>
+            <dd>refer to the people or organizations that share the same interests or
+                intentions with media producers </dd>
+            <dt>
+                <h3>The Audience</h3>
+            </dt>
+            <dd>Significant element in delivering media text, cosumes the media</dd>
+        </dl>
+        <dl>
+            <dt>
+                <h4>Audience engagement</h4>
+            </dt>
+            <dd>Reaction of the audience to the media text. Different people react in varied ways to the same text</dd>
+            <dt>
+                <h4>Audience Expectations</h4>
+            </dt>
+            <dd>Anticipation of the audience about the text</dd>
+            <dd>Authors may satisfy or shatter the audience's expectations</dd>
+            <dt>
+                <h4>Audience foreknowledge</h4>
+            </dt>
+            <dd>exact information which audiences brings about the media output</dd>
+            <dt>
+                <h4>Audience identification</h4>
+            </dt>
+            <dd>connection built by the media text to the audience</dd>
+            <dt>
+                <h4>Audience placement</h4>
+            </dt>
+            <dd>Strategies producers use to make the audience feel that the media text is made specifically for them
+            </dd>
+            <dt>
+                <h4>Audience research</h4>
+            </dt>
+            <dd>Monitoring of the audience before, during, and after the production of the media text</dd>
+        </dl>
+    </div>
+    <footer>
+        <a href="#MediaProducersStakeholdersAndAudience">Media Producers, Stakeholders and Audience</a>
+        <a href="#MediaConventions">Media Conventions</a>
+        <a href="#MediaCodes">Media Codes</a>
+        <a href="#textInformation">Text Information</a>
+        <p>Cymae Pilar P. Cawas</p>
+    </footer>
+
+</body>
+
+</html>
